@@ -1,4 +1,4 @@
-package com.muze.security;
+package com.muze;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,5 +9,4 @@ public class MuzeServerApplication {
     public static void main(String[] args) {
         SpringApplication.run(MuzeServerApplication.class, args);
     }
-
 }
