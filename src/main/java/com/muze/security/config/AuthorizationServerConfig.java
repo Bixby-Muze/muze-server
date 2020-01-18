@@ -18,6 +18,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
+        clients.inMemory()
+                .withClient("testClient")
+                .secret("testSecret")
+                .authorizedGrantTypes("password", "authorization_code")
+                .scopes("read", "write");
 
     }
 
