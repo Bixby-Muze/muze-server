@@ -21,6 +21,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         clients.inMemory()
                 .withClient("testClient")
                 .secret("testSecret")
+                .redirectUris("http://localhost:8080/oauth2/callback")
                 .authorizedGrantTypes("password", "authorization_code")
                 .scopes("read", "write");
 
