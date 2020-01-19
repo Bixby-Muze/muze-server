@@ -19,3 +19,4 @@ api:
     apiBaseUrl: http://www.kobis.or.kr/kobisopenapi/webservice/rest/
     dailyBoxOfficeUrl: boxoffice/searchDailyBoxOfficeList.json
     weeklyBoxOfficeUrl: boxoffice/searchWeeklyBoxOfficeList.json
+    movieListUrl: /movie/searchMovieList.json
