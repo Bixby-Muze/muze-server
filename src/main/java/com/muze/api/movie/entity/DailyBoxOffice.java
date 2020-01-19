@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import java.io.Serializable;
 
 @Data
-@Entity
 public class DailyBoxOffice implements Serializable {
 
     private String rnum; // 순번

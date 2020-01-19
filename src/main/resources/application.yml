@@ -12,3 +12,9 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     properties.hibernate.hbm2ddl.auto: update
     showSql: true
+
+api:
+  key: 08dcd1b5b0105efc838fc917d5478ed4
+  url:
+    apiBaseUrl: http://www.kobis.or.kr/kobisopenapi/webservice/rest/
+    dailyBoxOfficeUrl: boxoffice/searchDailyBoxOfficeList.json

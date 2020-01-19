@@ -1,16 +1,26 @@
 package com.muze.api.movie.controller;
 
+import com.muze.api.movie.entity.DailyBoxOffice;
+import com.muze.api.movie.service.DailyBoxOfficeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping(value = "/dailyBoxOffice", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 public class DailyBoxOfficeController {
-    @RequestMapping(value = "/dailyBoxOfficeTest", method = RequestMethod.GET)
+
+    private DailyBoxOfficeService dailyBoxOfficeService;
+
+    @Autowired
+    public DailyBoxOfficeController(DailyBoxOfficeService dailyBoxOfficeService) {
+        this.dailyBoxOfficeService = dailyBoxOfficeService;
+    }
+
     @ResponseStatus(value = HttpStatus.OK)
-    public String test() {
-        return "I`m Aliver!";
+    @GetMapping
+    public String getAll() {
+        return dailyBoxOfficeService.getAll();
     }
 }
