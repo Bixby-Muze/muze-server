@@ -41,8 +41,12 @@ public class MovieDetailService {
                 .encode(StandardCharsets.UTF_8)
                 .toUri();
 
-        Map<String,Object> map = restTemplate.getForObject(uri, Map.class);
-        ResponseMessage responseMessage = new ResponseMessage(HttpStatus.OK, map);
+        System.out.println("[영화 리스트 조회 서비스]");
+        System.out.println("movieCd: " + movieCd);
+        System.out.println("URI: " + uri);
+
+        ResponseMessage responseMessage = new ResponseMessage(HttpStatus.OK);
+        responseMessage.add("movieInfoResult", restTemplate.getForObject(uri, Map.class));
 
         return responseMessage;
     }

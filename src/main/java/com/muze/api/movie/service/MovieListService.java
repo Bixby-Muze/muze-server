@@ -55,8 +55,8 @@ public class MovieListService {
         System.out.println("openEndDt: " + openEndDt);
         System.out.println("URI: " + uri);
 
-        Map<String,Object> map = restTemplate.getForObject(uri, Map.class);
-        ResponseMessage responseMessage = new ResponseMessage(HttpStatus.OK, map);
+        ResponseMessage responseMessage = new ResponseMessage(HttpStatus.OK);
+        responseMessage.add("movieListResult", restTemplate.getForObject(uri, Map.class));
 
         return responseMessage;
     }

@@ -43,12 +43,12 @@ public class ActorDetailService {
                 .encode(StandardCharsets.UTF_8)
                 .toUri();
 
-        System.out.println("[배우 리스트 조회]");
+        System.out.println("[배우 디테일 조회]");
         System.out.println("peopleCd: " + peopleCd);
         System.out.println("URI: " + uri);
 
-        Map<String,Object> map = restTemplate.getForObject(uri, Map.class);
-        ResponseMessage responseMessage = new ResponseMessage(HttpStatus.OK, map);
+        ResponseMessage responseMessage = new ResponseMessage(HttpStatus.OK);
+        responseMessage.add("peopleInfoResult", restTemplate.getForObject(uri, Map.class));
 
         return responseMessage;
     }

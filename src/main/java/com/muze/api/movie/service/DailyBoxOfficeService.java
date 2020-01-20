@@ -45,8 +45,12 @@ public class DailyBoxOfficeService {
                 .encode(StandardCharsets.UTF_8)
                 .toUri();
 
-        Map<String,Object> map = restTemplate.getForObject(uri, Map.class);
-        ResponseMessage responseMessage = new ResponseMessage(HttpStatus.OK, map);
+        System.out.println("[일간 박스오피스 조회]");
+        System.out.println("targetDt: " + targetDt);
+        System.out.println("URI: " + uri);
+
+        ResponseMessage responseMessage = new ResponseMessage(HttpStatus.OK);
+        responseMessage.add("boxOfficeResult", restTemplate.getForObject(uri, Map.class));
 
         return responseMessage;
     }
