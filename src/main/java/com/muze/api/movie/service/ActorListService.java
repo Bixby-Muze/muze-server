@@ -1,13 +1,16 @@
 package com.muze.api.movie.service;
 
+import com.muze.util.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
 
 /**
  * 배우 리스트 조회 서비스
@@ -30,7 +33,8 @@ public class ActorListService {
     private String key;
 
 
-    public String getActorList(String peopleNm, String curPage) {
+    public ResponseMessage getActorList(String peopleNm, String curPage) {
+
         URI uri = UriComponentsBuilder.fromHttpUrl(baseUrl + actorListUrl)
                 .queryParam("key", key)
                 .queryParam("peopleNm", peopleNm)
@@ -40,6 +44,9 @@ public class ActorListService {
                 .encode(StandardCharsets.UTF_8)
                 .toUri();
 
-        return restTemplate.getForObject(uri, String.class);
+        Map<String,Object> map = restTemplate.getForObject(uri, Map.class);
+        ResponseMessage responseMessage = new ResponseMessage(HttpStatus.OK, map);
+
+        return responseMessage;
     }
 }

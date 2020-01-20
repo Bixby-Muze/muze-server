@@ -1,6 +1,7 @@
 package com.muze.api.movie.controller;
 
 import com.muze.api.movie.service.ActorListService;
+import com.muze.util.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -20,7 +21,7 @@ public class ActorListController {
 
     @ResponseStatus(value = HttpStatus.OK)
     @GetMapping
-    public String getActorList(@RequestParam("curPage") String curPage, @RequestParam("peopleNm") String peopleNm) {
+    public ResponseMessage getActorList(@RequestParam("curPage") String curPage, @RequestParam("peopleNm") String peopleNm) {
         return actorListService.getActorList(curPage, peopleNm);
     }
 }

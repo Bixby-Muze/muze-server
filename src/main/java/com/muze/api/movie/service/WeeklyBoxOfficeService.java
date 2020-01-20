@@ -1,8 +1,10 @@
 package com.muze.api.movie.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.muze.util.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -36,7 +38,8 @@ public class WeeklyBoxOfficeService {
     @Value("${api.key}")
     private String key;
 
-    public String getAll(String targetDt) {
+    public ResponseMessage getAll(String targetDt) {
+
         URI uri = UriComponentsBuilder.fromHttpUrl(baseUrl + weeklyBoxOfficeUrl)
                 .queryParam("key", key)
                 .queryParam("targetDt", targetDt)
@@ -44,10 +47,9 @@ public class WeeklyBoxOfficeService {
                 .encode(StandardCharsets.UTF_8)
                 .toUri();
 
-//        Map<String, Object> map = new HashMap<String, Object>();
-//        map = restTemplate.getForObject(builder.toUriString(), Map.class);
-//        System.out.println(map.get("boxOfficeResult"));
+        Map<String,Object> map = restTemplate.getForObject(uri, Map.class);
+        ResponseMessage responseMessage = new ResponseMessage(HttpStatus.OK, map);
 
-        return restTemplate.getForObject(uri, String.class);
+        return responseMessage;
     }
 }
