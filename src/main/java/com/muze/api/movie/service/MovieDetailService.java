@@ -7,28 +7,25 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 @Service
-public class WeeklyBoxOfficeService {
-
-    private final RestTemplate restTemplate;
+public class MovieDetailService {
 
     @Autowired
-    public WeeklyBoxOfficeService(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
-    }
+    private RestTemplate restTemplate;
 
     @Value("${api.url.apiBaseUrl}")
     private String baseUrl;
 
-    @Value("${api.url.weeklyBoxOfficeUrl}")
-    private String weeklyBoxOfficeUrl;
+    @Value("${api.url.movieDetailUrl}")
+    private String movieDetailUrl;
 
     @Value("${api.key}")
     private String key;
 
-    public String getAll(String targetDt) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl + weeklyBoxOfficeUrl)
+    public String getMovieDetail(String movieCd) {
+
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl + movieDetailUrl)
                 .queryParam("key", key)
-                .queryParam("targetDt", targetDt);
+                .queryParam("movieCd", movieCd);
 
         return restTemplate.getForObject(builder.toUriString(), String.class);
     }

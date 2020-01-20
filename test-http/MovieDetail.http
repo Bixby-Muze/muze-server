@@ -1,0 +1,5 @@
+GET http://localhost:8080/api/actorList?curPage=1&peopleNm=장동건
+GET http://www.kobis.or.kr/kobisopenapi/webservice/rest/people/searchPeopleList.json?curPage=1&peopleNm=장동건
+Content-Type: application/json
+
+###

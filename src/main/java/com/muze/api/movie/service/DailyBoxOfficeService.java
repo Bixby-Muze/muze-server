@@ -25,10 +25,10 @@ public class DailyBoxOfficeService {
     @Value("${api.key}")
     private String key;
 
-    public String getAll() {
+    public String getAll(String targetDt) {
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl + dailyBoxOfficeUrl)
                 .queryParam("key", key)
-                .queryParam("targetDt", 20200119);
+                .queryParam("targetDt", targetDt);
 
         return restTemplate.getForObject(builder.toUriString(), String.class);
     }

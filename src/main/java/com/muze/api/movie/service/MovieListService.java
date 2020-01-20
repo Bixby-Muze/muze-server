@@ -25,9 +25,15 @@ public class MovieListService {
     @Value("${api.key}")
     private String key;
 
-    public String getAll() {
+    public String getAll(String movieNm, String directorNm, String openStartDt, String openEndDt) {
+
+
         UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl + movieListUrl)
-                .queryParam("key", key);
+                .queryParam("key", key)
+                .queryParam("movieNm", movieNm)
+                .queryParam("directorNm", directorNm)
+                .queryParam("openStartDt", openStartDt)
+                .queryParam("openEndDt", openEndDt);
 
         return restTemplate.getForObject(builder.toUriString(), String.class);
     }
