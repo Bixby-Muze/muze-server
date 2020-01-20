@@ -7,7 +7,14 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
+
+/**
+ * 배우 디테일 조회 서비스
+ * @author ooeunz
+ */
 
 @Service
 public class ActorDetailService {
@@ -25,10 +32,17 @@ public class ActorDetailService {
     private String key;
 
     public String getActorDetail(String peopleCd) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl + actorDetailUrl)
+        URI uri = UriComponentsBuilder.fromHttpUrl(baseUrl + actorDetailUrl)
                 .queryParam("key", key)
-                .queryParam("peopleCd", peopleCd);
+                .queryParam("peopleCd", peopleCd)
+                .build()
+                .encode(StandardCharsets.UTF_8)
+                .toUri();
 
-        return restTemplate.getForObject(builder.toUriString(), String.class);
+        System.out.println("[배우 리스트 조회]");
+        System.out.println("peopleCd: " + peopleCd);
+        System.out.println("URI: " + uri);
+
+        return restTemplate.getForObject(uri, String.class);
     }
 }

@@ -6,6 +6,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * 영화 리스트 조회 컨트롤러
+ * @author ooeunz
+ */
+
 @RestController
 @RequestMapping(value = "/api/movieList", produces = MediaType.APPLICATION_JSON_VALUE)
 public class MovieListController {
