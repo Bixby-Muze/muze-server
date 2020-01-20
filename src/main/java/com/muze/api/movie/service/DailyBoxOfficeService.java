@@ -1,13 +1,16 @@
 package com.muze.api.movie.service;
 
+import com.muze.util.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
 
 /**
  * 일간 박스오피스 조회 서비스
@@ -33,7 +36,8 @@ public class DailyBoxOfficeService {
     @Value("${api.key}")
     private String key;
 
-    public String getAll(String targetDt) {
+    public ResponseMessage getAll(String targetDt) {
+
         URI uri = UriComponentsBuilder.fromHttpUrl(baseUrl + dailyBoxOfficeUrl)
                 .queryParam("key", key)
                 .queryParam("targetDt", targetDt)
@@ -41,6 +45,13 @@ public class DailyBoxOfficeService {
                 .encode(StandardCharsets.UTF_8)
                 .toUri();
 
-        return restTemplate.getForObject(uri, String.class);
+        System.out.println("[일간 박스오피스 조회]");
+        System.out.println("targetDt: " + targetDt);
+        System.out.println("URI: " + uri);
+
+        ResponseMessage responseMessage = new ResponseMessage(HttpStatus.OK);
+        responseMessage.add("boxOfficeResult", restTemplate.getForObject(uri, Map.class));
+
+        return responseMessage;
     }
 }

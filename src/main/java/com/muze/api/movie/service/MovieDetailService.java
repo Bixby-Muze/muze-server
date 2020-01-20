@@ -1,13 +1,16 @@
 package com.muze.api.movie.service;
 
+import com.muze.util.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
+import java.util.Map;
 
 /**
  * 영화 리스트 조회 서비스
@@ -29,7 +32,7 @@ public class MovieDetailService {
     @Value("${api.key}")
     private String key;
 
-    public String getMovieDetail(String movieCd) {
+    public ResponseMessage getMovieDetail(String movieCd) {
 
         URI uri = UriComponentsBuilder.fromHttpUrl(baseUrl + movieDetailUrl)
                 .queryParam("key", key)
@@ -38,6 +41,13 @@ public class MovieDetailService {
                 .encode(StandardCharsets.UTF_8)
                 .toUri();
 
-        return restTemplate.getForObject(uri, String.class);
+        System.out.println("[영화 리스트 조회 서비스]");
+        System.out.println("movieCd: " + movieCd);
+        System.out.println("URI: " + uri);
+
+        ResponseMessage responseMessage = new ResponseMessage(HttpStatus.OK);
+        responseMessage.add("movieInfoResult", restTemplate.getForObject(uri, Map.class));
+
+        return responseMessage;
     }
 }

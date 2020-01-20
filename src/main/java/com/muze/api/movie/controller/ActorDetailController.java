@@ -2,6 +2,7 @@ package com.muze.api.movie.controller;
 
 import com.muze.api.movie.common.ImageCaching;
 import com.muze.api.movie.service.ActorDetailService;
+import com.muze.util.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -24,7 +25,7 @@ public class ActorDetailController {
 
     @ResponseStatus(value = HttpStatus.OK)
     @GetMapping
-    public String getActorDetail(@RequestParam("peopleCd") String peopleCd) {
+    public ResponseMessage getActorDetail(@RequestParam("peopleCd") String peopleCd) {
         return actorDetailService.getActorDetail(peopleCd);
     }
 

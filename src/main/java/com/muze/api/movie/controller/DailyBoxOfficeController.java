@@ -1,7 +1,7 @@
 package com.muze.api.movie.controller;
 
-import com.muze.api.movie.entity.DailyBoxOffice;
 import com.muze.api.movie.service.DailyBoxOfficeService;
+import com.muze.util.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -25,7 +25,7 @@ public class DailyBoxOfficeController {
 
     @ResponseStatus(value = HttpStatus.OK)
     @GetMapping
-    public String getAll(@RequestParam("targetDt") String targetDt) {
+    public ResponseMessage getAll(@RequestParam("targetDt") String targetDt) {
         return dailyBoxOfficeService.getAll(targetDt);
     }
 }
