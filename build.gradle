@@ -14,16 +14,21 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-security' // Spring Security
-    implementation 'org.springframework.security.oauth:spring-security-oauth2:2.3.3.RELEASE' // Spring Security Oauth2
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa' // JPA
-    implementation 'org.springframework.boot:spring-boot-starter-data-rest' // Spring Data REST
-    implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.1.4.RELEASE' // Oauth2 autoconfigure
+//    implementation 'org.springframework.boot:spring-boot-starter-security' // Spring Security
+//    implementation 'org.springframework.security.oauth:spring-security-oauth2:2.3.3.RELEASE' // Spring Security Oauth2
+//    implementation 'org.springframework.security.oauth.boot:spring-security-oauth2-autoconfigure:2.1.4.RELEASE' // Oauth2 autoconfigure
     implementation 'com.h2database:h2' // H2
 
     compileOnly 'org.projectlombok:lombok:1.18.10' // Lombok 컴파일시에만 의존성 추가
 
     annotationProcessor 'org.projectlombok:lombok:1.18.10'
+
+    compile 'org.jsoup:jsoup:1.12.1'
+
+    compile("org.springframework.boot:spring-boot-starter-jdbc")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("mysql:mysql-connector-java")
+    compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.10.Final'
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

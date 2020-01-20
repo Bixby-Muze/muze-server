@@ -7,8 +7,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
+
+/**
+ * 주간 박스오피스 조회 서비스
+ * @author ooeunz
+ */
 
 @Service
 public class WeeklyBoxOfficeService {
@@ -30,14 +37,17 @@ public class WeeklyBoxOfficeService {
     private String key;
 
     public String getAll(String targetDt) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl + weeklyBoxOfficeUrl)
+        URI uri = UriComponentsBuilder.fromHttpUrl(baseUrl + weeklyBoxOfficeUrl)
                 .queryParam("key", key)
-                .queryParam("targetDt", targetDt);
+                .queryParam("targetDt", targetDt)
+                .build()
+                .encode(StandardCharsets.UTF_8)
+                .toUri();
 
 //        Map<String, Object> map = new HashMap<String, Object>();
 //        map = restTemplate.getForObject(builder.toUriString(), Map.class);
 //        System.out.println(map.get("boxOfficeResult"));
 
-        return restTemplate.getForObject(builder.toUriString(), String.class);
+        return restTemplate.getForObject(uri, String.class);
     }
 }

@@ -6,6 +6,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
+
+/**
+ * 배우 리스트 조회 서비스
+ * @author ooeunz
+ */
 
 @Service
 public class ActorListService {
@@ -24,12 +31,15 @@ public class ActorListService {
 
 
     public String getActorList(String peopleNm, String curPage) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl + actorListUrl)
+        URI uri = UriComponentsBuilder.fromHttpUrl(baseUrl + actorListUrl)
                 .queryParam("key", key)
                 .queryParam("peopleNm", peopleNm)
                 .queryParam("curPage", curPage)
-                .queryParam("itemPerPage", 5);
+                .queryParam("itemPerPage", 5)
+                .build()
+                .encode(StandardCharsets.UTF_8)
+                .toUri();
 
-        return restTemplate.getForObject(builder.toUriString(), String.class);
+        return restTemplate.getForObject(uri, String.class);
     }
 }
