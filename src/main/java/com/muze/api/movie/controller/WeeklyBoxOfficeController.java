@@ -4,25 +4,18 @@ import com.muze.api.movie.service.WeeklyBoxOfficeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/weeklyBoxOffice", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/weeklyBoxOffice", produces = MediaType.APPLICATION_JSON_VALUE)
 public class WeeklyBoxOfficeController {
 
-    private WeeklyBoxOfficeService weeklyBoxOfficeService;
-
     @Autowired
-    public WeeklyBoxOfficeController(WeeklyBoxOfficeService weeklyBoxOfficeService) {
-        this.weeklyBoxOfficeService = weeklyBoxOfficeService;
-    }
+    private WeeklyBoxOfficeService weeklyBoxOfficeService;
 
     @ResponseStatus(value = HttpStatus.OK)
     @GetMapping
-    public String getAll() {
-        return weeklyBoxOfficeService.getAll();
+    public String getAll(@RequestParam("targetDt") String targetDt) {
+        return weeklyBoxOfficeService.getAll(targetDt);
     }
 }

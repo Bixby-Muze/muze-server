@@ -4,31 +4,30 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-@Service
-public class DailyBoxOfficeService {
+import java.util.Map;
 
-    private final RestTemplate restTemplate;
+@Service
+public class ActorDetailService {
 
     @Autowired
-    public DailyBoxOfficeService(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
-    }
+    private RestTemplate restTemplate;
 
     @Value("${api.url.apiBaseUrl}")
     private String baseUrl;
 
-    @Value("${api.url.dailyBoxOfficeUrl}")
-    private String dailyBoxOfficeUrl;
+    @Value("${api.url.actorDetailUrl}")
+    private String actorDetailUrl;
 
     @Value("${api.key}")
     private String key;
 
-    public String getAll(String targetDt) {
-        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl + dailyBoxOfficeUrl)
+    public String getActorDetail(String peopleCd) {
+        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(baseUrl + actorDetailUrl)
                 .queryParam("key", key)
-                .queryParam("targetDt", targetDt);
+                .queryParam("peopleCd", peopleCd);
 
         return restTemplate.getForObject(builder.toUriString(), String.class);
     }

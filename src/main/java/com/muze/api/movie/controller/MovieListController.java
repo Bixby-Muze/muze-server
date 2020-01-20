@@ -4,26 +4,21 @@ import com.muze.api.movie.service.MovieListService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/movieList", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/movieList", produces = MediaType.APPLICATION_JSON_VALUE)
 public class MovieListController {
 
-    private final MovieListService movieListService;
-
     @Autowired
-    MovieListController(MovieListService movieListService) {
-        this.movieListService = movieListService;
-    }
+    private MovieListService movieListService;
 
     @ResponseStatus(value = HttpStatus.OK)
     @GetMapping
-    public String getAll() {
-        return movieListService.getAll();
+    public String getAll(@RequestParam("movieNm") String movieNm,
+                         @RequestParam("directorNm") String directorNm,
+                         @RequestParam("openStartDt") String openStartDt,
+                         @RequestParam("openEndDt") String openEndDt) {
+        return movieListService.getAll(movieNm, directorNm, openStartDt, openEndDt);
     }
-
 }

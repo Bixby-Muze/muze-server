@@ -8,19 +8,20 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/dailyBoxOffice", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "api/dailyBoxOffice", produces = MediaType.APPLICATION_JSON_VALUE)
 public class DailyBoxOfficeController {
 
+    @Autowired
     private DailyBoxOfficeService dailyBoxOfficeService;
 
-    @Autowired
     public DailyBoxOfficeController(DailyBoxOfficeService dailyBoxOfficeService) {
         this.dailyBoxOfficeService = dailyBoxOfficeService;
     }
 
     @ResponseStatus(value = HttpStatus.OK)
     @GetMapping
-    public String getAll() {
-        return dailyBoxOfficeService.getAll();
+    public String getAll(@RequestParam("targetDt") String targetDt) {
+        return dailyBoxOfficeService.getAll(targetDt);
     }
 }
+

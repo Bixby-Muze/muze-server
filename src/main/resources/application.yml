@@ -1,17 +1,17 @@
 spring:
-  h2:
-    console:
-      enabled: true
-      settings:
-        web-allow-others: true
-  datasource:
-    url: jdbc:h2:tcp://localhost/~/test
-    driver-class-name: org.h2.Driver
-    username: sa
-  jpa:
-    database-platform: org.hibernate.dialect.H2Dialect
-    properties.hibernate.hbm2ddl.auto: update
-    showSql: true
+#  h2:
+#    console:
+#      enabled: true
+#      settings:
+#        web-allow-others: true
+#  datasource:
+#    url: jdbc:h2:tcp://localhost/~/test
+#    driver-class-name: org.h2.Driver
+#    username: sa
+#  jpa:
+#    database-platform: org.hibernate.dialect.H2Dialect
+#    properties.hibernate.hbm2ddl.auto: update
+#    showSql: true
 
 api:
   key: 08dcd1b5b0105efc838fc917d5478ed4
@@ -19,4 +19,7 @@ api:
     apiBaseUrl: http://www.kobis.or.kr/kobisopenapi/webservice/rest/
     dailyBoxOfficeUrl: boxoffice/searchDailyBoxOfficeList.json
     weeklyBoxOfficeUrl: boxoffice/searchWeeklyBoxOfficeList.json
-    movieListUrl: /movie/searchMovieList.json
+    movieListUrl: movie/searchMovieList.json
+    movieDetailUrl: movie/searchMovieInfo.json
+    actorListUrl: people/searchPeopleList.json
+    actorDetailUrl: people/searchPeopleInfo.json
