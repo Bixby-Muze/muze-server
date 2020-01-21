@@ -39,13 +39,16 @@ public class ImageCaching {
                 .data(body)
                 .userAgent(USER_AGENT)
                 .post();
-        Elements elements = doc.select(".info1 a");
-        String imgUrl = elements.attr("href");
+        Elements elements = doc.select(".info1 img");
+        String imgUrl = elements.attr("src");
 
         return new String(BASE_URL + imgUrl);
     }
 
     public String getImageUrl(String code) throws IOException {
+
+        System.out.println("[movie repo type]");
+        System.out.println(this.movieRepository.getClass().getName());
 
         Movie movie = movieRepository.findByCode(code);
 
@@ -54,7 +57,7 @@ public class ImageCaching {
             String imgUrl = crawling(code);
             Movie exMovie = new Movie(code, imgUrl);
 
-            movieRepository.save(movie);
+            movieRepository.save(exMovie);
 
             System.out.println("[Save Movie ImgUrl]");
             System.out.println("code: " + code);

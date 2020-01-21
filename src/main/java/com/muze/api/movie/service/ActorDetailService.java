@@ -1,5 +1,6 @@
 package com.muze.api.movie.service;
 
+import com.muze.api.movie.common.ImageCaching;
 import com.muze.util.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -48,6 +49,7 @@ public class ActorDetailService {
         System.out.println("URI: " + uri);
 
         ResponseMessage responseMessage = new ResponseMessage(HttpStatus.OK);
+
         responseMessage.add("peopleInfoResult", restTemplate.getForObject(uri, Map.class));
 
         return responseMessage;

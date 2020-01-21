@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 /**
  * 일간 박스오피스 조회 컨트롤러
  * @author ooeunz
@@ -25,7 +27,7 @@ public class DailyBoxOfficeController {
 
     @ResponseStatus(value = HttpStatus.OK)
     @GetMapping
-    public ResponseMessage getAll(@RequestParam("targetDt") String targetDt) {
+    public ResponseMessage getAll(@RequestParam("targetDt") String targetDt) throws IOException {
         return dailyBoxOfficeService.getAll(targetDt);
     }
 }
