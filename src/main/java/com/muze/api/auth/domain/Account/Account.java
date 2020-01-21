@@ -1,8 +1,12 @@
 package com.muze.api.auth.domain.Account;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 @Entity
+@Table(name="account")
 public class Account {
 
     @Id
@@ -24,6 +28,9 @@ public class Account {
 
     @Column
     private String socialId;
+
+    @OneToMany(mappedBy = "account", fetch = FetchType.LAZY)
+    private List<Like> likes = new ArrayList<>();
 
     @Column
     @Enumerated(value = EnumType.STRING)
@@ -66,5 +73,9 @@ public class Account {
         this.username = username;
         this.password = password;
         this.userRole = UserRole.USER;
+    }
+
+    public void setLike(Like like) {
+        this.likes.add(like);
     }
 }

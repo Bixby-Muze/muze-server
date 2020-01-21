@@ -29,7 +29,7 @@ public class ImageCaching {
         final String URL = "http://kobis.or.kr/kobis/business/mast/mvie/searchMovieDtl.do";
         final String USER_AGENT = "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36";
 
-        final String BASE_URL = "http://kobis.or.kr/kobis/business/mast/mvie/popupImg.do?imgURL=";
+        final String BASE_URL = "http://kobis.or.kr";
 
         HashMap<String, String> body = new HashMap<>();
         body.put("code", code);

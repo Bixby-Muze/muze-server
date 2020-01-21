@@ -22,10 +22,10 @@ public class MuzeServerApplication {
     }
 
 //    @Bean
-//////    CommandLineRunner bootstrapeTestAccount(AccountRepository accountRepository, PasswordEncoder passwordEncoder) {
-//////        return args -> {
-//////            Account account = new Account("yuns994@gmail.com", "ooeunz", passwordEncoder.encode("123123"));
-//////            accountRepository.save(account);
-//////        };
-//////    }
+//    CommandLineRunner bootstrapeTestAccount(AccountRepository accountRepository, PasswordEncoder passwordEncoder) {
+//        return args -> {
+//            Account account = new Account("yuns994@gmail.com", "ooeunz", passwordEncoder.encode("123123"));
+//            accountRepository.save(account);
+//        };
+//    }
 }
