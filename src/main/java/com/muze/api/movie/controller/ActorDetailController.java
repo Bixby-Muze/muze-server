@@ -23,6 +23,9 @@ public class ActorDetailController {
     @Autowired
     private ActorDetailService actorDetailService;
 
+    @Autowired
+    ImageCaching imageCaching;
+
     @ResponseStatus(value = HttpStatus.OK)
     @GetMapping
     public ResponseMessage getActorDetail(@RequestParam("peopleCd") String peopleCd) {
@@ -31,8 +34,6 @@ public class ActorDetailController {
 
     @PostMapping("test")
     public String testController(@RequestBody Map<String, Object> json) throws IOException {
-
-        ImageCaching imageCaching = new ImageCaching();
 
         return imageCaching.getImageUrl((String) json.get("code"));
     }

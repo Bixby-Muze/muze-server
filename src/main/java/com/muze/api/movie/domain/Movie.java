@@ -13,16 +13,13 @@ public class Movie {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String code;
 
-    @Column(nullable = false)
+    @Column(nullable = true)
     private String imgUrl;
 
-    public Movie() {
-        this.code = "";
-        this.imgUrl = "";
-    }
+    public Movie() {}
 
     public Movie(String code, String imgUrl) {
         this.code = code;

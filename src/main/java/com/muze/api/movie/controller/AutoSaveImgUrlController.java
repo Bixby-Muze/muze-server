@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import java.net.URI;
+import java.nio.charset.StandardCharsets;
+import java.util.Map;
 
 /**
  * Image URL 자동저장
@@ -40,7 +45,17 @@ public class AutoSaveImgUrlController {
     @GetMapping("/mustBeUsedOnlyOnce")
     public void autoSaveImg() {
 
-
+        for (int curPage = 1; curPage < 5; curPage++) {
+            URI uri = UriComponentsBuilder.fromHttpUrl(baseUrl + movieListUrl)
+                    .queryParam("key", key)
+                    .queryParam("curPage", curPage)
+                    .build()
+                    .encode(StandardCharsets.UTF_8)
+                    .toUri();
+            Map<String, Object> json = restTemplate.getForObject(uri, Map.class);
+//            String code = (String) json.get("movieList");
+            System.out.println(json);
+        }
 
     }
 }

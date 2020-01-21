@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Long> {
 
-    public Movie findByCode(String code);
+    Movie findByCode(String code);
 
     @Async
-    public Movie save(Movie movie);
+    Movie save(Movie movie);
 }

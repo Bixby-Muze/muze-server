@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
+
 /**
  * 영화 디테일 조회 컨트롤러
  * @author ooeunz
@@ -21,7 +23,7 @@ public class MovieDetailController {
 
     @ResponseStatus(value = HttpStatus.OK)
     @GetMapping
-    public ResponseMessage getMovieDetail(@RequestParam("movieCd") String movieCd) {
+    public ResponseMessage getMovieDetail(@RequestParam("movieCd") String movieCd) throws IOException {
         return movieDetailService.getMovieDetail(movieCd);
     }
 }
