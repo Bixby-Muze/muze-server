@@ -5,6 +5,7 @@ import com.muze.util.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -27,6 +28,7 @@ public class DailyBoxOfficeController {
 
     @ResponseStatus(value = HttpStatus.OK)
     @GetMapping
+    @PostAuthorize("hasRole('ROLE_USER')")
     public ResponseMessage getAll(@RequestParam("targetDt") String targetDt) throws IOException {
         return dailyBoxOfficeService.getAll(targetDt);
     }

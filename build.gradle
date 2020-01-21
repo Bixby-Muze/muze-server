@@ -30,6 +30,11 @@ dependencies {
     compile("mysql:mysql-connector-java")
     compile group: 'org.hibernate', name: 'hibernate-core', version: '5.4.10.Final'
 
+    compile('org.springframework.security:spring-security-oauth2-client')
+    compile('org.springframework.security:spring-security-oauth2-jose')
+    compile('org.springframework.boot:spring-boot-starter-security')
+    compile group: 'com.auth0', name: 'java-jwt', version: '3.3.0'
+
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }

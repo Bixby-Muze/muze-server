@@ -1,10 +1,7 @@
 package com.muze.api.movie.service;
 
 import com.muze.api.movie.common.ImageCaching;
-import com.muze.api.movie.dto.DailyBoxOfficeDto;
-import com.muze.api.movie.dto.DailyBoxOfficeListDto;
 import com.muze.util.ResponseMessage;
-import org.hibernate.internal.ScrollableResultsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -15,7 +12,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 일간 박스오피스 조회 서비스

@@ -1,6 +1,5 @@
 package com.muze.api.movie.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.muze.api.movie.common.ImageCaching;
 import com.muze.util.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import java.io.IOException;
 import java.net.URI;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 

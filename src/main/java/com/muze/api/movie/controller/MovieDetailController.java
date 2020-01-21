@@ -5,6 +5,7 @@ import com.muze.util.ResponseMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -23,6 +24,7 @@ public class MovieDetailController {
 
     @ResponseStatus(value = HttpStatus.OK)
     @GetMapping
+    @PostAuthorize("hasRole('ROLE_USER')")
     public ResponseMessage getMovieDetail(@RequestParam("movieCd") String movieCd) throws IOException {
         return movieDetailService.getMovieDetail(movieCd);
     }
