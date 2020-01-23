@@ -38,9 +38,9 @@ SAMSUNG Bixby Hackton **SERVER**
 []()
 ### 🛠 Core Technology
 * Spring security.
-* Auto collect dumy data.
+* Auto collect movie img data.
 * Using Movie Data.
-* Crawling
+* Crawling.
 
 \
 []()
