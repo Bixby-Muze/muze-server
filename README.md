@@ -1,5 +1,16 @@
 # Muze
+
+<div align="center" style="display:flex;">
+	<img src="https://img.global.news.samsung.com/my/wp-content/uploads/2017/08/Bixby_Logo-Text.png" width="30%"/>
+</div>
+
+<div align="center">
 SAMSUNG Bixby Hackton **SERVER**
+
+영화의 이름과 대략적인 개봉 날짜만으로도 
+
+지금까지 개봉한 약 76000여개의 영화를 손쉽게 검색할 수 있는 **Bixby Capsule Muze.**
+</div>
 
 \
 []()

@@ -27,7 +27,7 @@ import java.util.Map;
  */
 
 @RestController
-@RequestMapping("/api/authSaveImg")
+@RequestMapping("/api/autoSaveImg")
 public class AutoSaveImgUrlController {
 
     @Autowired
