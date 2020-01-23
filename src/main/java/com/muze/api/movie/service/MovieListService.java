@@ -18,6 +18,7 @@ import java.util.Map;
 
 /**
  * 영화 리스트 조회 서비스
+ *
  * @author ooeunz
  */
 

@@ -15,6 +15,7 @@ import java.util.HashMap;
 
 /**
  * GET Image URL in database OR crawling
+ *
  * @author ooeunz
  */
 

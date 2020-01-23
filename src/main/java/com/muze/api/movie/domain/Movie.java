@@ -19,7 +19,8 @@ public class Movie {
     @Column(nullable = true)
     private String imgUrl;
 
-    public Movie() {}
+    public Movie() {
+    }
 
     public Movie(String code, String imgUrl) {
         this.code = code;

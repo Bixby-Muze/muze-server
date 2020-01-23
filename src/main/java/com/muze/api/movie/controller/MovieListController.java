@@ -12,6 +12,7 @@ import java.io.IOException;
 
 /**
  * 영화 리스트 조회 컨트롤러
+ *
  * @author ooeunz
  */
 
