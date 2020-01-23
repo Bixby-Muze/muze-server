@@ -16,6 +16,7 @@ SAMSUNG Bixby Hackton **SERVER**
 </div>
 
 \
+\
 []()
 ### 🍍 Introduce My project
 * Bixby 음성인식을 이용해 76000건의 영화 검색 및 Detail 조회
@@ -35,12 +36,7 @@ SAMSUNG Bixby Hackton **SERVER**
 
 \
 []()
-
----
-\
-\
-[]()
-## 🛠 Core Technology
+### 🛠 Core Technology
 * Spring security.
 * Auto collect dumy data.
 * Using Movie Data.
@@ -48,13 +44,7 @@ SAMSUNG Bixby Hackton **SERVER**
 
 \
 []()
-
----
-\
-\
-[]()
-
-## ⚙️  Dependencies
+### ⚙️  Dependencies
 ```gradle
 dependencies {
     compile('org.springframework.security:spring-security-oauth2-client')
