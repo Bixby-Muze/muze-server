@@ -29,6 +29,10 @@ SAMSUNG Bixby Hackton **SERVER**
 12시간의 짧은 해커톤이었지만, 클린코드와 클린 아키텍처를 신경씀.\
 [[참고] 우아한형제들: 주니어 개발자의 클린 아키텍처 맛보기](http://woowabros.github.io/tools/2019/10/02/clean-architecture-experience.html)
 
+ | 박스오피스 | 영화 디테일 | 배우 검색 | 영화 검색 |
+|:---:|:---:| :---:|:---:|
+ | ![image](./readmeImg/week.jpeg)|![image](./readmeImg/detail.jpeg) | ![image](./readmeImg/actor.jpeg) | ![image](./readmeImg/search.jpeg) |
+
 \
 []()
 ### 📚 API Docs
