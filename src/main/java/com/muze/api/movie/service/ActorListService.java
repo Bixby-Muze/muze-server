@@ -19,20 +19,10 @@ import java.util.Map;
  */
 
 @Service
-public class ActorListService {
-
-    @Autowired
-    private RestTemplate restTemplate;
-
-    @Value("${api.url.apiBaseUrl}")
-    private String baseUrl;
+public class ActorListService extends AbstractMovie{
 
     @Value("${api.url.actorListUrl}")
     private String actorListUrl;
-
-    @Value("${api.key}")
-    private String key;
-
 
     public ResponseMessage getActorList(String peopleNm, String curPage) {
 

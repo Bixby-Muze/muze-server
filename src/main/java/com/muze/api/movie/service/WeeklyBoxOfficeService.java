@@ -23,22 +23,10 @@ import java.util.Map;
  */
 
 @Service
-public class WeeklyBoxOfficeService {
-
-    @Autowired
-    private RestTemplate restTemplate;
-
-    @Autowired
-    private ImageCaching imageCaching;
-
-    @Value("${api.url.apiBaseUrl}")
-    private String baseUrl;
+public class WeeklyBoxOfficeService extends AbstractMovie{
 
     @Value("${api.url.weeklyBoxOfficeUrl}")
     private String weeklyBoxOfficeUrl;
-
-    @Value("${api.key}")
-    private String key;
 
     private Map<String, Object> insertImgUrl(Map<String, Object> data) throws IOException {
 

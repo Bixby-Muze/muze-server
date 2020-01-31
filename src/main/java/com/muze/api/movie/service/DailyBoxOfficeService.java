@@ -23,26 +23,13 @@ import java.util.Map;
  */
 
 @Service
-public class DailyBoxOfficeService {
-
-    private final RestTemplate restTemplate;
-
-    @Autowired
-    public DailyBoxOfficeService(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
-    }
+public class DailyBoxOfficeService  extends AbstractMovie{
 
     @Autowired
     public ImageCaching imageCaching;
 
-    @Value("${api.url.apiBaseUrl}")
-    private String baseUrl;
-
     @Value("${api.url.dailyBoxOfficeUrl}")
     private String dailyBoxOfficeUrl;
-
-    @Value("${api.key}")
-    private String key;
 
     private Map<String, Object> insertImg(Map<String, Object> data) throws IOException {
 

@@ -21,22 +21,10 @@ import java.util.Map;
  */
 
 @Service
-public class MovieDetailService {
-
-    @Autowired
-    private RestTemplate restTemplate;
-
-    @Autowired
-    private ImageCaching imageCaching;
-
-    @Value("${api.url.apiBaseUrl}")
-    private String baseUrl;
+public class MovieDetailService extends AbstractMovie{
 
     @Value("${api.url.movieDetailUrl}")
     private String movieDetailUrl;
-
-    @Value("${api.key}")
-    private String key;
 
     private Map<String, Object> insertImgUrl(Map<String, Object> data, String imgUrl) {
 
