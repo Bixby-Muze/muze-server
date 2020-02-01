@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * 배우 리스트 조회 컨트롤러
  *
- * @author ooeunz
+ * @author ooeunz, yoogle
  */
 
 @RestController
@@ -24,7 +24,7 @@ public class ActorListController {
     @ResponseStatus(value = HttpStatus.OK)
     @GetMapping
     @PostAuthorize("hasRole('ROLE_USER')")
-    public ResponseMessage getActorList(@RequestParam("curPage") String curPage, @RequestParam("peopleNm") String peopleNm) {
-        return actorListService.getActorList(curPage, peopleNm);
+    public ResponseMessage getActorList(@RequestParam("curPage") String curPage, @RequestParam("peopleNm") String peopleNm, @RequestParam("filmoNames") String filmoNames) {
+        return actorListService.getActorList(curPage, peopleNm, filmoNames);
     }
 }
