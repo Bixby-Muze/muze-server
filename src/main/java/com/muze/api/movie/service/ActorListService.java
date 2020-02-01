@@ -24,13 +24,12 @@ public class ActorListService extends AbstractMovie{
     @Value("${api.url.actorListUrl}")
     private String actorListUrl;
 
-    public ResponseMessage getActorList(String peopleNm, String curPage) {
+    public ResponseMessage getActorList(String curPage, String peopleNm) {
 
         URI uri = UriComponentsBuilder.fromHttpUrl(baseUrl + actorListUrl)
                 .queryParam("key", key)
-                .queryParam("peopleNm", peopleNm)
                 .queryParam("curPage", curPage)
-                .queryParam("itemPerPage", 5)
+                .queryParam("peopleNm", peopleNm)
                 .build()
                 .encode(StandardCharsets.UTF_8)
                 .toUri();
