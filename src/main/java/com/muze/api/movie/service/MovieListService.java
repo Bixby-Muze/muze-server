@@ -1,12 +1,10 @@
 package com.muze.api.movie.service;
 
-import com.muze.api.movie.common.ImageCaching;
+import com.muze.api.movie.common.MuzeUtil;
 import com.muze.util.ResponseMessage;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.IOException;
@@ -20,6 +18,7 @@ import java.util.Map;
  * 영화 리스트 조회 서비스
  *
  * @author ooeunz
+ * @author yoogle
  */
 
 @Service
@@ -28,29 +27,22 @@ public class MovieListService extends AbstractMovie {
     @Value("${api.url.movieListUrl}")
     private String movieListUrl;
 
-    private Map<String, Object> insertImgUrl(Map<String, Object> data) throws IOException {
-
-        // inside
+    private Map<String, Object> updateMovieList(Map<String, Object> data) throws IOException {
         Map<String, Object> movieListResult = (Map<String, Object>) data.get("movieListResult");
 
         List<Map<String, String>> movieList = (List<Map<String, String>>) movieListResult.get("movieList");
 
-        List<Map<String, String>> exMovieList = new ArrayList<Map<String, String>>();
-
-        for (int i = 0; i < movieList.size(); i++) {
-
-            Map<String, String> movieInfoOne = movieList.get(i);
-
-            String movieCd = movieInfoOne.get("movieCd");
-
+        for(Map<String, String> ml : movieList) {
+            String openDt = ml.get("openDt");
+            String movieCd = ml.get("movieCd");
             String imgUrl = imageCaching.getImageUrl(movieCd);
+            String convertOpenDt = muzeUtil.convertDateStringFormat(openDt);
 
-            movieInfoOne.put("imgUrl", imgUrl);
-            exMovieList.add(movieInfoOne);
+            ml.put("openDt", convertOpenDt);
+            ml.put("imgUrl", imgUrl);
         }
 
-        // outside
-        movieListResult.put("movieList", exMovieList);
+        movieListResult.put("movieList", movieList);
 
         return movieListResult;
     }
@@ -76,9 +68,8 @@ public class MovieListService extends AbstractMovie {
 
         Map<String, Object> data = restTemplate.getForObject(uri, Map.class);
 
-
         ResponseMessage responseMessage = new ResponseMessage(HttpStatus.OK);
-        responseMessage.add("movieListResult", insertImgUrl(data));
+        responseMessage.add("movieListResult", updateMovieList(data));
 
         return responseMessage;
     }
